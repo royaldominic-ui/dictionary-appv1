@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary App</title>
+    <link rel="stylesheet" href="dictionary-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📖 Dictionary</h1>
+            <p class="tagline">Look up any word and explore its meaning</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Enter a word to search..." 
+                    autocomplete="off"
+                >
+                <button id="searchBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    Search
+                </button>
+            </div>
+            <div id="suggestions" class="suggestions hidden"></div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Searching...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error" class="error hidden">
+            <div class="error-icon">❌</div>
+            <h3>Word Not Found</h3>
+            <p id="errorMessage">Sorry, we couldn't find the word you're looking for.</p>
+            <button onclick="clearSearch()" class="try-again-btn">Try Another Word</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="results hidden">
+            <!-- Word Header -->
+            <div class="word-header">
+                <div class="word-info">
+                    <h2 id="word" class="word-title"></h2>
+                    <p id="phonetic" class="phonetic"></p>
+                </div>
+                <button id="audioBtn" class="audio-btn hidden">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Meanings -->
+            <div id="meanings" class="meanings"></div>
+
+            <!-- Origin/Etymology -->
+            <div id="origin" class="origin hidden">
+                <h3>📜 Origin</h3>
+                <p id="originText"></p>
+            </div>
+
+            <!-- Synonyms & Antonyms -->
+            <div id="relatedWords" class="related-words hidden">
+                <div id="synonymsSection" class="synonyms hidden">
+                    <h3>🔄 Synonyms</h3>
+                    <div id="synonymsList" class="word-chips"></div>
+                </div>
+                <div id="antonymsSection" class="antonyms hidden">
+                    <h3>⚡ Antonyms</h3>
+                    <div id="antonymsList" class="word-chips"></div>
+                </div>
+            </div>
+
+            <!-- Source Link -->
+            <div class="source">
+                <p>Source: <a id="sourceLink" href="#" target="_blank">Free Dictionary API</a></p>
+            </div>
+        </div>
+
+        <!-- Recent Searches -->
+        <div id="recentSearches" class="recent-searches hidden">
+            <h3>📚 Recent Searches</h3>
+            <div id="recentList" class="recent-list"></div>
+        </div>
+
+        <!-- Sample Words -->
+        <div class="sample-words">
+            <h3>💡 Try searching for:</h3>
+            <div class="word-chips">
+                <button class="word-chip" onclick="searchWord('serendipity')">serendipity</button>
+                <button class="word-chip" onclick="searchWord('ephemeral')">ephemeral</button>
+                <button class="word-chip" onclick="searchWord('resilience')">resilience</button>
+                <button class="word-chip" onclick="searchWord('eloquent')">eloquent</button>
+                <button class="word-chip" onclick="searchWord('paradigm')">paradigm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dictionary-app.js"></script>
+</body>
+</html>
